@@ -1,23 +1,40 @@
-default: &default
-  pool: 5
-  timeout: 5000
-
+# PostgreSQL. Versions 8.2 and up are supported.
+#
+# Install the pg driver:
+#   gem install pg
+# On Mac OS X with macports:
+#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+# On Windows:
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
+#
+# Configure Using Gemfile
+# gem 'pg'
+#
 development:
-  <<: *default
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: bb
+  pool: 5
+  username: admin
+  password: techno
 
 test:
-  <<: *default
-  adapter: sqlite3
-  database: db/test.sqlite3
+ adapter: postgresql
+ encoding: unicode
+ host: localhost
+ database: bb
+ pool: 5
+ username: admin
+ password: techno
 
-# Use sqlite in production by default. Greenlight supports
 production:
-  <<: *default
-  adapter: <%= ENV['DB_ADAPTER'] || 'sqlite3' %>
-  host: <%= ENV['DB_HOST'] %>
-  port: <%= ENV['DB_PORT' || '5432'] %>
-  database: <%= ENV['DB_NAME'] || 'db/production/production.sqlite3' %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+ adapter: postgresql
+ encoding: unicode
+ host: localhost
+ database: bb
+ pool: 5
+ username: admin
+ password: techno
